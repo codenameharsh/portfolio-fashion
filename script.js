@@ -53,3 +53,16 @@ document.querySelectorAll('[data-open-case]').forEach(link => {
     });
   });
 });
+
+const cursorLabel = document.querySelector('.cursor-label');
+const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+if (cursorLabel && canHover) {
+  document.querySelectorAll('a, button').forEach(element => {
+    element.addEventListener('pointerenter', () => cursorLabel.classList.add('is-visible'));
+    element.addEventListener('pointerleave', () => cursorLabel.classList.remove('is-visible'));
+  });
+  document.addEventListener('pointermove', event => {
+    cursorLabel.style.transform = `translate3d(${event.clientX + 18}px, ${event.clientY + 16}px, 0)`;
+  });
+  window.addEventListener('scroll', () => cursorLabel.classList.remove('is-visible'), { passive: true });
+}

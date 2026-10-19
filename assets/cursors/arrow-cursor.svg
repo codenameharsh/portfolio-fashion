@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <filter id="dual-tone" x="-10%" y="-10%" width="120%" height="120%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1.75" result="outline" />
+      <feFlood flood-color="#fff9ef" result="outline-color" />
+      <feComposite in="outline-color" in2="outline" operator="in" result="light-outline" />
+      <feFlood flood-color="#211815" result="arrow-color" />
+      <feComposite in="arrow-color" in2="SourceAlpha" operator="in" result="dark-arrow" />
+      <feMerge><feMergeNode in="light-outline" /><feMergeNode in="dark-arrow" /></feMerge>
+    </filter>
+  </defs>
+  <image href="../../arrow.png" width="64" height="64" filter="url(#dual-tone)" />
+</svg>
