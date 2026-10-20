@@ -1,0 +1,104 @@
+/* Calm, visible desktop navigation; Menu remains a compact-screen control. */
+.site-header .menu-toggle { display: none; }
+.site-header nav {
+  position: static;
+  display: flex;
+  margin-left: 30px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  flex-direction: row;
+  align-items: center;
+  gap: 26px;
+}
+.site-header nav a { padding: 0; border: 0; color: #fff9ef; }
+.site-header nav a:hover { color: #e1b367; }
+
+@media (max-width: 860px) {
+  .site-header .menu-toggle { display: block; }
+  .site-header nav {
+    position: absolute;
+    top: 64px;
+    right: 22px;
+    display: none;
+    margin-left: 0;
+    min-width: 150px;
+    padding: 12px 18px;
+    border: 1px solid rgba(255, 249, 239, .28);
+    background: #171316;
+    box-shadow: 0 15px 32px rgba(0, 0, 0, .22);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .site-header nav.open { display: flex; }
+  .site-header nav a { padding: 12px 0; border-bottom: 1px solid rgba(255, 249, 239, .18); }
+  .site-header nav a:last-child { border-bottom: 0; }
+}
+
+@media (max-width: 520px) { .site-header nav { right: 18px; } }
+
+/* Keep the tablet card layout deliberate rather than stretched between states. */
+@media (min-width: 561px) and (max-width: 900px) {
+  .selected-project-card {
+    grid-template-columns: minmax(240px, .85fr) minmax(0, 1.15fr);
+    min-height: 300px;
+  }
+  .selected-project-card > img { min-height: 300px; height: 100%; }
+  .selected-project-card > div { justify-content: center; padding: 28px; }
+}
+
+/* Long-form PACE sections need a slightly clearer reading rhythm on small screens. */
+@media (max-width: 720px) {
+  .pace-case .case-copy + .case-copy,
+  .pace-case .garment-section + .garment-section { border-top: 10px solid rgba(24, 20, 17, .06); }
+  .pace-case .case-takeaway { margin-top: 46px; }
+}
+
+/* The cross-discipline story belongs with the designer's personal introduction. */
+.about-practice {
+  max-width: 1050px;
+  margin-top: 72px;
+  padding: 34px 0 38px;
+  border-top: 1px solid rgba(24, 20, 17, .3);
+  border-bottom: 1px solid rgba(24, 20, 17, .3);
+}
+.about-practice .section-label { margin-bottom: 26px; }
+.about-practice h3 {
+  max-width: 790px;
+  margin: 0;
+  font: 500 clamp(34px, 4.2vw, 58px) / .94 "Playfair Display", serif;
+  letter-spacing: -.055em;
+}
+.about-practice h3 em { font-weight: 500; }
+.about .about-practice > p:not(.section-label) {
+  max-width: 650px;
+  margin: 26px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.about-principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 37px; }
+.about-principles div { padding-top: 15px; border-top: 1px solid rgba(24, 20, 17, .28); }
+.about-principles span { display: block; color: #9e4939; font: 500 10px "DM Mono", monospace; letter-spacing: .07em; text-transform: uppercase; }
+.about-principles strong { display: block; margin-top: 9px; font: 500 20px / 1.05 "Playfair Display", serif; letter-spacing: -.035em; }
+
+@media (max-width: 720px) {
+  .about-practice { margin-top: 52px; padding: 29px 0 31px; }
+  .about-practice h3 { font-size: 42px; }
+  .about .about-practice > p:not(.section-label) { font-size: 16px; }
+  .about-principles { grid-template-columns: 1fr; gap: 0; margin-top: 31px; }
+  .about-principles div { padding: 14px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .selected-project-card:hover { transform: none; }
+}
